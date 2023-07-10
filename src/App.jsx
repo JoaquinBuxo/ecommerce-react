@@ -1,7 +1,12 @@
 import './App.css';
+import ProductListPage from './pages/ProductListPage';
 
 function App() {
-  return <>hello world</>;
+  return (
+    <>
+      <ProductListPage />
+    </>
+  );
 }
 
 export default App;
