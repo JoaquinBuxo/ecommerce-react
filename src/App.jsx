@@ -10,7 +10,9 @@ import {
 
 //Pages
 import ProductListPage from './pages/ProductListPage';
-import ProductDetailsPage from './pages/ProductDetailsPage';
+import ProductDetailsPage, {
+  productDetailsLoader,
+} from './pages/ProductDetailsPage';
 import NotFound from './pages/NotFound';
 import RootLayout from './layouts/RootLayout';
 
@@ -18,7 +20,11 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<RootLayout />}>
       <Route path='/' element={<ProductListPage />} />
-      <Route path='/product' element={<ProductDetailsPage />} />
+      <Route
+        path='/product/:productId'
+        element={<ProductDetailsPage />}
+        loader={productDetailsLoader}
+      />
       <Route path='*' element={<NotFound />} />
     </Route>
   )
