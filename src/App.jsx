@@ -1,12 +1,17 @@
 import './App.css';
-import ProductListPage from './pages/ProductListPage';
-import ProductDetailsPage from './pages/ProductDetailsPage';
+
+// Routing
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
 } from 'react-router-dom';
+
+//Pages
+import ProductListPage from './pages/ProductListPage';
+import ProductDetailsPage from './pages/ProductDetailsPage';
+import NotFound from './pages/NotFound';
 import RootLayout from './layouts/RootLayout';
 
 const router = createBrowserRouter(
@@ -14,6 +19,7 @@ const router = createBrowserRouter(
     <Route path='/' element={<RootLayout />}>
       <Route path='/' element={<ProductListPage />} />
       <Route path='/product' element={<ProductDetailsPage />} />
+      <Route path='*' element={<NotFound />} />
     </Route>
   )
 );
