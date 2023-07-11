@@ -19,7 +19,9 @@ const ProductDetailsPage = () => {
 
   return (
     <div>
-      <h2>Product details for {product.model}</h2>
+      <h2 className='text-3xl font-bold underline'>
+        Product details for {product.model}
+      </h2>
       <p>Brand: {product.brand}</p>
     </div>
   );
