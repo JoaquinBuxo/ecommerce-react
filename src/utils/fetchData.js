@@ -7,9 +7,9 @@ function getSuspender(promise) {
       status = 'success';
       response = res;
     })
-    .catch((err) => {
+    .catch((error) => {
       status = 'error';
-      response = err;
+      response = error;
     });
 
   const read = () => {
