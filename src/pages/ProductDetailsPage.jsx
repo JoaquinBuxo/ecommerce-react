@@ -7,6 +7,10 @@ export const productDetailsLoader = async ({ params }) => {
     `https://itx-frontend-test.onrender.com/api/product/${productId}`
   );
 
+  if (!response.ok) {
+    throw Error('Could not find that product');
+  }
+
   return response.json();
 };
 

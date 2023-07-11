@@ -15,6 +15,7 @@ import ProductDetailsPage, {
 } from './pages/ProductDetailsPage';
 import NotFound from './pages/NotFound';
 import RootLayout from './layouts/RootLayout';
+import ProductError from './pages/ProductError';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
         path='/product/:productId'
         element={<ProductDetailsPage />}
         loader={productDetailsLoader}
+        errorElement={<ProductError />}
       />
       <Route path='*' element={<NotFound />} />
     </Route>
