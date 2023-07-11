@@ -1,13 +1,11 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Breadcrumbs from './Breadcrumbs';
 
 const Header = () => {
   return (
     <header>
-      <nav>
-        <NavLink to='/'>Products</NavLink>
-        <NavLink to='/product'>Details</NavLink>
-      </nav>
+      <Link to='/'>ECOMMERCE</Link>
+      <Breadcrumbs />
     </header>
   );
 };

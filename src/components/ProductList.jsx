@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { fetchData } from '../utils/fetchData';
 import { Link } from 'react-router-dom';
@@ -19,7 +18,7 @@ const ProductList = ({ query }) => {
   return (
     <div>
       {filteredProducts?.map((product) => (
-        <Link to={`/product/${product.id}`} key={product.id}>
+        <Link to={`/${product.id}`} key={product.id}>
           <p>{product.model}</p>
         </Link>
       ))}
