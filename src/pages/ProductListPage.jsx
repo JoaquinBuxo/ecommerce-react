@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-import Header from '../components/Header';
 import Item from '../components/Item';
 import Search from '../components/Search';
 import ProductList from '../components/ProductList';
@@ -11,7 +10,6 @@ const ProductListPage = () => {
   return (
     <div>
       Product List
-      <Header />
       <Search query={query} setQuery={setQuery} />
       <Item />
       <ErrorBoundary fallback={<div>Error fetching data</div>}>
