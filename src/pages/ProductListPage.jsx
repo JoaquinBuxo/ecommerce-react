@@ -1,7 +1,8 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, lazy } from 'react';
 import Search from '../components/Search';
-import ProductList from '../components/ProductList';
 import { ErrorBoundary } from 'react-error-boundary';
+
+const ProductList = lazy(() => import('../components/ProductList'));
 
 const ProductListPage = () => {
   const [query, setQuery] = React.useState('');
