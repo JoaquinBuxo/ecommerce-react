@@ -1,16 +1,19 @@
 import PropTypes from 'prop-types';
+import * as ApiService from '../services/apiService';
 
 const Actions = ({ productId, options }) => {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const { colors, storages } = event.target.elements;
 
     const productSelected = {
       id: productId,
-      color: colors.value,
-      storage: storages.value,
+      colorCode: colors.value,
+      storageCode: storages.value,
     };
+
+    await ApiService.addToCart(productSelected);
   };
 
   return (
