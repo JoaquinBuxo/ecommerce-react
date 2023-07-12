@@ -16,6 +16,7 @@ import ProductDetailsPage, {
 import NotFound from './pages/NotFound';
 import RootLayout from './layouts/RootLayout';
 import ProductError from './pages/ProductError';
+import { CartProvider } from './context/CartContext';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,7 +34,11 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
+  );
 }
 
 export default App;

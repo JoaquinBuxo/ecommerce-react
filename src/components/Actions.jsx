@@ -1,7 +1,20 @@
 import PropTypes from 'prop-types';
+import { useCart } from '../context/CartContext';
 import * as ApiService from '../services/apiService';
 
 const Actions = ({ productId, options }) => {
+  const { setCartCount } = useCart();
+
+  const addToCart = async (productSelected) => {
+    try {
+      const response = await ApiService.addToCart(productSelected);
+      const { count } = response;
+      setCartCount((prevCount) => prevCount + count);
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -13,7 +26,7 @@ const Actions = ({ productId, options }) => {
       storageCode: storages.value,
     };
 
-    await ApiService.addToCart(productSelected);
+    addToCart(productSelected);
   };
 
   return (
