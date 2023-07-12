@@ -1,14 +1,14 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 const Search = ({ query, setQuery }) => {
   return (
-    <div>
-      Search:
+    <div className='join flex justify-center'>
       <input
         value={query}
         type='search'
         onChange={(e) => setQuery(e.target.value)}
+        className='input input-bordered join-item'
+        placeholder='Search...'
       />
     </div>
   );
