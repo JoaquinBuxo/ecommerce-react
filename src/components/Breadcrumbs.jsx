@@ -11,12 +11,21 @@ const Breadcrumbs = () => {
     .map((crumb) => {
       currentLink += `/${crumb}`;
       return (
-        <div key={crumb}>
+        <li key={crumb}>
           <Link to={currentLink}>{crumb}</Link>
-        </div>
+        </li>
       );
     });
-  return <div>{crumbs}</div>;
+  return (
+    <div className='text-sm breadcrumbs'>
+      <ul>
+        <li>
+          <Link to='/'>Products</Link>
+        </li>
+        {crumbs}
+      </ul>
+    </div>
+  );
 };
 
 export default Breadcrumbs;
