@@ -1,4 +1,9 @@
+import Description from '../components/Description';
+import Actions from '../components/Actions';
+import { lazy, Suspense } from 'react';
 import { useLoaderData } from 'react-router-dom';
+
+const Image = lazy(() => import('../components/Image'));
 
 export const productDetailsLoader = async ({ params }) => {
   const { productId } = params;
@@ -18,11 +23,19 @@ const ProductDetailsPage = () => {
   const product = useLoaderData();
 
   return (
-    <div>
-      <h2 className='text-3xl font-bold underline'>
-        Product details for {product.model}
-      </h2>
-      <p>Brand: {product.brand}</p>
+    <div className='flex flex-col justify-between lg:flex-row gap-16'>
+      <div className='flex flex-col gap-6 lg:w-2/4 aspect-square rounded-xl'>
+        <Suspense fallback={<div>Loading Image...</div>}>
+          <Image imgUrl={product.imgUrl} model={product.model} />
+        </Suspense>
+      </div>
+      <div className='flex flex-col gap-4 lg:w-2/4'>
+        <div>
+          <h1 className='text-3xl font-bold'>{product.model}</h1>
+        </div>
+        <Description product={product} />
+        <Actions product={product} />
+      </div>
     </div>
   );
 };

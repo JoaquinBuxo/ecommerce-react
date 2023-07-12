@@ -17,14 +17,14 @@ const Breadcrumbs = () => {
       );
     });
   return (
-    <div className='text-sm breadcrumbs'>
+    <nav className='text-sm breadcrumbs'>
       <ul>
         <li>
           <Link to='/'>Products</Link>
         </li>
         {crumbs}
       </ul>
-    </div>
+    </nav>
   );
 };
 
