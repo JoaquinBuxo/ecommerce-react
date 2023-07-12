@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import Search from '../components/Search';
 import { ErrorBoundary } from 'react-error-boundary';
+import Loading from '../components/Loading';
 
 const ProductList = lazy(() => import('../components/ProductList'));
 
@@ -15,7 +16,7 @@ const ProductListPage = () => {
       </h2>
 
       <ErrorBoundary fallback={<div>Error fetching data</div>}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loading />}>
           <ProductList query={query} />
         </Suspense>
       </ErrorBoundary>

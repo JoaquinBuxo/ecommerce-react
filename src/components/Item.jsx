@@ -1,13 +1,14 @@
 import { lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
+import Loading from './Loading';
 
 const Image = lazy(() => import('./Image'));
 
 const Item = ({ product }) => {
   return (
     <div className='group relative'>
-      <div className='aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md border border-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80'>
-        <Suspense fallback={<div>Loading Image...</div>}>
+      <div className='aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md border border-gray-200 group-hover:opacity-75 lg:h-80'>
+        <Suspense fallback={<Loading />}>
           <Image imgUrl={product.imgUrl} model={product.model} />
         </Suspense>
       </div>
