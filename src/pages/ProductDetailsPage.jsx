@@ -6,20 +6,6 @@ import Loading from '../components/Loading';
 
 const Image = lazy(() => import('../components/Image'));
 
-export const productDetailsLoader = async ({ params }) => {
-  const { productId } = params;
-
-  const response = await fetch(
-    `https://itx-frontend-test.onrender.com/api/product/${productId}`
-  );
-
-  if (!response.ok) {
-    throw Error('Could not find that product');
-  }
-
-  return response.json();
-};
-
 const ProductDetailsPage = () => {
   const product = useLoaderData();
 

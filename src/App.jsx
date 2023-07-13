@@ -10,13 +10,12 @@ import {
 
 //Pages
 import ProductListPage from './pages/ProductListPage';
-import ProductDetailsPage, {
-  productDetailsLoader,
-} from './pages/ProductDetailsPage';
+import ProductDetailsPage from './pages/ProductDetailsPage';
 import NotFound from './pages/NotFound';
 import RootLayout from './layouts/RootLayout';
 import ProductError from './pages/ProductError';
 import { CartProvider } from './context/CartContext';
+import { getProductsDetails } from './services/apiService';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,7 +24,7 @@ const router = createBrowserRouter(
       <Route
         path='/:productId'
         element={<ProductDetailsPage />}
-        loader={productDetailsLoader}
+        loader={getProductsDetails}
         errorElement={<ProductError />}
       />
       <Route path='*' element={<NotFound />} />

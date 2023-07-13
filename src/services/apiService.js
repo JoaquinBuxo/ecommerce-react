@@ -4,6 +4,16 @@ const baseURL = 'https://itx-frontend-test.onrender.com/api';
 
 export const getAllProducts = fetchData(`${baseURL}/product`);
 
+export const getProductsDetails = async ({ params }) => {
+  try {
+    const { productId } = params;
+    const response = await fetch(`${baseURL}/product/${productId}`);
+    return response.json();
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const addToCart = async (productSelected) => {
   try {
     const response = await fetch(`${baseURL}/cart`, {
