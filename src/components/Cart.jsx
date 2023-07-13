@@ -1,4 +1,4 @@
-import { useCart } from '../context/CartContext';
+import { useCart } from '../hooks/useCart';
 
 const Cart = () => {
   const { cartCount } = useCart();

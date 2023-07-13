@@ -1,14 +1,23 @@
+import { useEffect } from 'react';
 import Item from '../components/Item';
 import PropTypes from 'prop-types';
-import { fetchData } from '../utils/fetchData';
 import { Link } from 'react-router-dom';
-
-const apiProducts = fetchData(
-  'https://itx-frontend-test.onrender.com/api/product'
-);
+import { useLocalStorage } from '../hooks/useLocalStorage';
+import * as ApiService from '../services/apiService';
 
 const ProductList = ({ query }) => {
-  const products = apiProducts.read();
+  const [products, setProducts] = useLocalStorage('products', []);
+
+  useEffect(() => {
+    try {
+      if (products.length === 0) {
+        const data = ApiService.getAllProducts.read();
+        setProducts(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, [products, setProducts]);
 
   const filteredProducts = products.filter(
     (product) =>

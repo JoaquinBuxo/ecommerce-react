@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useCart } from '../context/CartContext';
+import { useCart } from '../hooks/useCart';
 import * as ApiService from '../services/apiService';
 
 const Actions = ({ productId, options }) => {

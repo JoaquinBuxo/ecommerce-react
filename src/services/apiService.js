@@ -1,4 +1,8 @@
+import { fetchData } from '../utils/fetchData';
+
 const baseURL = 'https://itx-frontend-test.onrender.com/api';
+
+export const getAllProducts = fetchData(`${baseURL}/product`);
 
 export const addToCart = async (productSelected) => {
   try {

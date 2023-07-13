@@ -19,7 +19,7 @@ const getSavedValue = (key, initialValue) => {
   return initialValue;
 };
 
-export function useLocalStorage(key, initialValue) {
+export const useLocalStorage = (key, initialValue) => {
   const [value, setValue] = useState(() => {
     return getSavedValue(key, initialValue);
   });
@@ -30,4 +30,4 @@ export function useLocalStorage(key, initialValue) {
   }, [key, value]);
 
   return [value, setValue];
-}
+};
