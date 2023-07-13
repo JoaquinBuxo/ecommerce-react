@@ -1,6 +1,6 @@
 const Loading = () => {
   return (
-    <div className='flex w-1/4 h-1/3 m-auto loading loading-spinner loading-lg'></div>
+    <div className='flex w-28 m-auto loading loading-spinner loading-xs'></div>
   );
 };
 
