@@ -15,7 +15,7 @@ const ProductList = ({ query }) => {
         setProducts(data);
       }
     } catch (error) {
-      console.log(error);
+      console.log('ProductList: Error fetching: ', error);
     }
   }, [products, setProducts]);
 

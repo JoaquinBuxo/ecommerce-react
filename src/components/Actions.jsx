@@ -11,7 +11,7 @@ const Actions = ({ productId, options }) => {
       const { count } = response;
       setCartCount((prevCount) => prevCount + count);
     } catch (error) {
-      console.error('Error adding to cart:', error);
+      console.error('Actions: Error adding to cart:', error);
     }
   };
 

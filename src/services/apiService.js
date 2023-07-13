@@ -20,7 +20,7 @@ export const addToCart = async (productSelected) => {
     const result = await response.json();
     return result;
   } catch (error) {
-    console.log('addToCart error:\n', error);
+    console.log('apiService: addToCart error: ', error);
     throw error;
   }
 };
