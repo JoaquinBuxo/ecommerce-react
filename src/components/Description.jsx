@@ -37,7 +37,9 @@ const Description = ({ product }) => {
         </ul>
       </div>
 
-      <h6 className='mt-10 text-2xl font-semibold'>${product.price}</h6>
+      <h6 className='mt-10 text-2xl font-semibold'>
+        {product.price ? `$${product.price}` : 'Price not available'}
+      </h6>
     </div>
   );
 };

@@ -35,7 +35,7 @@ const Actions = ({ productId, options }) => {
           >
             {selectOptions.map((option) => (
               <option id={option.code} key={option.code} value={option.code}>
-                {option.name}
+                {option.name.trim() ? option.name : 'Storage not available'}
               </option>
             ))}
           </select>

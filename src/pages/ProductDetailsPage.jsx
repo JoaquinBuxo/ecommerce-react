@@ -21,7 +21,9 @@ const ProductDetailsPage = () => {
           <h1 className='text-3xl font-bold'>{product.model}</h1>
         </div>
         <Description product={product} />
-        <Actions productId={product.id} options={product.options} />
+        {product.price && (
+          <Actions productId={product.id} options={product.options} />
+        )}
       </div>
     </div>
   );
