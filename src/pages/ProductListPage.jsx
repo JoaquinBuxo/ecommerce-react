@@ -3,7 +3,7 @@ import Search from '../components/Search';
 import { ErrorBoundary } from 'react-error-boundary';
 import Loading from '../components/Loading';
 
-const ProductList = lazy(() => import('../components/ProductList'));
+const ProductContainer = lazy(() => import('../components/ProductContainer'));
 
 const ProductListPage = () => {
   const [query, setQuery] = useState('');
@@ -17,7 +17,7 @@ const ProductListPage = () => {
 
       <ErrorBoundary fallback={<div>Error fetching data</div>}>
         <Suspense fallback={<Loading />}>
-          <ProductList query={query} />
+          <ProductContainer query={query} />
         </Suspense>
       </ErrorBoundary>
     </div>
