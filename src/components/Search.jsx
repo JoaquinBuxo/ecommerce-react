@@ -4,6 +4,7 @@ const Search = ({ query, setQuery }) => {
   return (
     <div className='join flex justify-center'>
       <input
+        id='search'
         value={query}
         type='search'
         onChange={(e) => setQuery(e.target.value)}

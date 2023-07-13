@@ -1,61 +1,39 @@
 import PropTypes from 'prop-types';
 
 const Description = ({ product }) => {
+  const productProperties = [
+    { label: 'Brand', value: product.brand },
+    { label: 'CPU', value: product.cpu },
+    { label: 'RAM', value: product.ram },
+    { label: 'OS', value: product.os },
+    { label: 'Display Resolution', value: product.displayResolution },
+    { label: 'Battery', value: product.battery },
+    { label: 'Primary Camera', value: product.primaryCamera },
+    { label: 'Secondary Camera', value: product.secondaryCmera },
+    { label: 'Dimensions', value: product.dimensions },
+    { label: 'Weight', value: product.weight },
+  ];
+
   return (
     <div className='mt-10'>
       <h3 className='text-sm font-medium text-gray-900'>Highlights</h3>
 
       <div className='mt-4'>
         <ul role='list' className='list-disc space-y-2 pl-4 text-sm'>
-          <li className='text-gray-400'>
-            <span className='text-gray-600'>Brand: {product.brand}</span>
-          </li>
-          <li className='text-gray-400'>
-            <span className='text-gray-600'>CPU: {product.cpu}</span>
-          </li>
-          <li className='text-gray-400'>
-            <span className='text-gray-600'>RAM: {product.ram}</span>
-          </li>
-          <li className='text-gray-400'>
-            <span className='text-gray-600'>OS: {product.os}</span>
-          </li>
-
-          <li className='text-gray-400'>
-            <span className='text-gray-600'>
-              Display Resolution: {product.displayResolution}
-            </span>
-          </li>
-          <li className='text-gray-400'>
-            <span className='text-gray-600'>Battery: {product.battery}</span>
-          </li>
-          <li className='text-gray-400'>
-            <span className='text-gray-600'>
-              Primary Camera:
-              {product.primaryCamera.map((item) => (
-                <span className='badge ml-3' key={item}>
-                  {item}
-                </span>
-              ))}
-            </span>
-          </li>
-          <li className='text-gray-400'>
-            <span className='text-gray-600'>
-              Secondary Camera:
-              {product.secondaryCmera.map((item) => (
-                <span className='badge ml-3' key={item}>
-                  {item}
-                </span>
-              ))}
-            </span>
-          </li>
-          <li className='text-gray-400'>
-            <span className='text-gray-600'>
-              Dimentions: {product.dimentions}
-            </span>
-          </li>
-          <li className='text-gray-400'>
-            <span className='text-gray-600'>Weight: {product.weight}</span>
-          </li>
+          {productProperties.map((property) => (
+            <li className='text-gray-400' key={property.label}>
+              <span className='text-gray-600'>
+                {property.label}:
+                {Array.isArray(property.value)
+                  ? property.value.map((item) => (
+                      <span className='badge ml-3' key={item}>
+                        {item}
+                      </span>
+                    ))
+                  : property.value}
+              </span>
+            </li>
+          ))}
         </ul>
       </div>
 
@@ -65,7 +43,19 @@ const Description = ({ product }) => {
 };
 
 Description.propTypes = {
-  product: PropTypes.object,
+  product: PropTypes.shape({
+    brand: PropTypes.string,
+    cpu: PropTypes.string,
+    ram: PropTypes.string,
+    os: PropTypes.string,
+    displayResolution: PropTypes.string,
+    battery: PropTypes.string,
+    primaryCamera: PropTypes.arrayOf(PropTypes.string),
+    secondaryCmera: PropTypes.arrayOf(PropTypes.string),
+    dimensions: PropTypes.string,
+    weight: PropTypes.string,
+    price: PropTypes.number,
+  }),
 };
 
 export default Description;
