@@ -46,7 +46,13 @@ The ecommerce app allows users to browse and purchase mobile devices. It feature
    npm run lint
    ```
 
-5. Build:
+5. Run Tests:
+
+   ```sh
+   npm test
+   ```
+
+6. Build:
 
    ```sh
    npm run build
