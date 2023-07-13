@@ -1,42 +1,38 @@
 import PropTypes from 'prop-types';
 import { useCart } from '../hooks/useCart';
-import * as ApiService from '../services/apiService';
 
 const Actions = ({ productId, options }) => {
-  const { setCartCount } = useCart();
-
-  const addToCart = async (productSelected) => {
-    try {
-      const response = await ApiService.addToCart(productSelected);
-      const { count } = response;
-      setCartCount((prevCount) => prevCount + count);
-    } catch (error) {
-      console.error('Actions: Error adding to cart:', error);
-    }
-  };
+  const { addToCart } = useCart();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    try {
+      const { colors, storages } = event.target.elements;
 
-    const { colors, storages } = event.target.elements;
+      const productSelected = {
+        id: productId,
+        colorCode: colors.value,
+        storageCode: storages.value,
+      };
 
-    const productSelected = {
-      id: productId,
-      colorCode: colors.value,
-      storageCode: storages.value,
-    };
-
-    addToCart(productSelected);
+      addToCart(productSelected);
+    } catch (error) {
+      console.log('Actions: Error getting data:', error);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit} action='/'>
       {Object.entries(options).map(([selectName, selectOptions]) => (
         <div key={selectName} className='form-control w-full max-w-xs'>
-          <label className='label'>
+          <label className='label' htmlFor={selectName}>
             <span className='label-text'>Pick the {selectName}</span>
           </label>
-          <select className='select select-bordered' name={selectName}>
+          <select
+            className='select select-bordered'
+            id={selectName}
+            name={selectName}
+          >
             {selectOptions.map((option) => (
               <option id={option.code} key={option.code} value={option.code}>
                 {option.name}

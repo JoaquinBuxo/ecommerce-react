@@ -10,7 +10,7 @@ export const getProductsDetails = async ({ params }) => {
   return response.json();
 };
 
-export const addToCart = async (productSelected) => {
+export const postToCart = async (productSelected) => {
   try {
     const response = await fetch(`${baseURL}/cart`, {
       method: 'POST',
